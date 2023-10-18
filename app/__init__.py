@@ -12,9 +12,9 @@ def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY=SECRET_KEY,
-        MYSQL_USER="root",
-        MYSQL_PASSWORD="1234",
-        MYSQL_DATABASE="ssisv3",
+        MYSQL_USER=DB_USERNAME,
+        MYSQL_PASSWORD=DB_PASSWORD,
+        MYSQL_DATABASE=DB_NAME,
         MYSQL_HOST=DB_HOST,
         #BOOTSTRAP_SERVE_LOCAL=BOOTSTRAP_SERVE_LOCAL
     )

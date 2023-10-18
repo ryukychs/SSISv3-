@@ -28,14 +28,15 @@
 
     <!-- College input form -->
     <div class="section">
-      <form id="add-college-form">
+      <form id="add-college-form" method="POST">
+        <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
         <div class="form-group">
-          <label for="college-code">College Code:</label>
-          <input type="text" id="college-code" name="college-code" required>
+          <label for="collegecode">College Code:</label>
+          <input type="text" id="collegecode" name="collegecode" required>
         </div>
         <div class="form-group">
-          <label for="college-name">College Name:</label>
-          <input type="text" id="college-name" name="college-name" required>
+          <label for="collegename">College Name:</label>
+          <input type="text" id="collegename" name="collegename" required>
         </div>
         <button type="submit">Add College</button>
       </form>

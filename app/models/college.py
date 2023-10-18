@@ -10,4 +10,8 @@ def college_list():
     cursor.close()
     return colleges
     
-    
+def new_college(collegecode, collegename):
+    cursor = mysql.connection.cursor()
+    cursor.execute("INSERT INTO colleges (collegecode, collegename) VALUES (%s, %s)", (collegecode, collegename))
+    mysql.connection.commit()
+    cursor.close()
