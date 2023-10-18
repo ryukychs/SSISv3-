@@ -54,25 +54,24 @@
           <tr>
             <th>Course Code</th>
             <th>Course Name</th>
-            <th>College</th>
+            <th>College Code</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          <!-- Course information will be dynamically added here -->
+          {% for course in courses %}
           <tr>
-            <td>CSE101</td>
-            <td>Computer Science</td>
-            <td>ABC College</td>
+            <td>{{ course.coursecode }}</td>
+            <td>{{ course.coursename }}</td>
+            <td>{{ course.collegecode }}</td>
             <td>
               <div class="button-container">
                 <button class="edit-button">Edit</button>
                 <button class="delete-button">Delete</button>
-              </div>
+                </div>
             </td>
           </tr>
-          <!-- Repeat the above row structure for each course -->
-        </tbody>
+          {% endfor %}
       </table>
     </div>
   </div>

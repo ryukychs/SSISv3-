@@ -76,22 +76,22 @@
           </tr>
         </thead>
         <tbody>
-          <!-- Student information will be dynamically added here -->
+          {% for student in students %}
           <tr>
-            <td>1</td>
-            <td>John</td>
-            <td>Doe</td>
-            <td>Computer Science</td>
-            <td>2023</td>
-            <td>Male</td>
+            <td>{{ student.id }}</td>
+            <td>{{ student.firstname }}</td>
+            <td>{{ student.lastname }}</td>
+            <td>{{ student.coursecode }}</td>
+            <td>{{ student.yearlevel }}</td>
+            <td>{{ student.gender }}</td>
             <td>
               <div class="button-container">
                 <button class="edit-button">Edit</button>
                 <button class="delete-button">Delete</button>
-              </div>
-
-          <!-- Repeat the above row structure for each student -->
-        </tbody>
+                </div>
+            </td>
+          </tr>
+          {% endfor %}
       </table>
     </div>
   </div>
