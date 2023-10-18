@@ -25,4 +25,17 @@ def create_app(test_config=None):
     def homepage():
         return render_template('index.html')
     
+    @app.route('/student')
+    def Student():
+        return render_template('student.html')
+    
+    @app.route('/course')
+    def Course():
+        return render_template('course.html')
+    
+    @app.route('/college')
+    def College():
+        return render_template('college.html')
+
+    
     return app
