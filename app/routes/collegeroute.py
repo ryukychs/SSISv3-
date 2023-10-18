@@ -6,4 +6,5 @@ college_bp = Blueprint('college', __name__)
 
 @college_bp.route('/college')
 def College():
-    return render_template('college.html')
+    colleges = college_list()
+    return render_template('college.html', colleges=colleges)

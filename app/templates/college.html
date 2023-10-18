@@ -54,18 +54,16 @@
           </tr>
         </thead>
         <tbody>
-          <!-- College information will be dynamically added here -->
+          {% for college in colleges %}
           <tr>
-            <td>ABC123</td>
-            <td>ABC College</td>
+            <td>{{ college.collegecode }}</td>
+            <td>{{ college.collegename }}</td>
             <td>
-              <div class="button-container">
-                <button class="edit-button">Edit</button>
-                <button class="delete-button">Delete</button>
-              </div>
+              <button class="edit-button">Edit</button>
+              <button class="delete-button">Delete</button>
             </td>
           </tr>
-          <!-- Repeat the above row structure for each college -->
+          {% endfor %}
         </tbody>
       </table>
     </div>
