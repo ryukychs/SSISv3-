@@ -28,7 +28,7 @@
 
     <!-- Course input form -->
     <div class="section">
-      <form id="add-course-form" method="POST">
+      <form id="add-course-form" method="POST" action="/course/add">
         <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
         <div class="form-group">
           <label for="coursecode">Course Code:</label>
@@ -71,7 +71,8 @@
             <td>
               <div class="button-container">
                 <button class="edit-button">Edit</button>
-                <button class="delete-button">Delete</button>
+                <button type="button" id="delCourse" course-code="{{course.coursecode}}" csrf-token="{{csrf_token()}}" onclick="delCourse(this)">Delete</button>
+
                 </div>
             </td>
           </tr>

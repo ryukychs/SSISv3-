@@ -23,3 +23,9 @@ def find_student(studentsearch):
     students = cursor.fetchall()
     cursor.close()
     return students
+
+def delete_student(student_id):
+    cursor = mysql.connection.cursor()
+    cursor.execute("DELETE FROM students WHERE id = %s", (student_id,))
+    mysql.connection.commit()
+    cursor.close()
