@@ -15,3 +15,12 @@ def new_college(collegecode, collegename):
     cursor.execute("INSERT INTO colleges (collegecode, collegename) VALUES (%s, %s)", (collegecode, collegename))
     mysql.connection.commit()
     cursor.close()
+    
+def find_colleges(collegesearch):
+    cursor = mysql.connection.cursor(dictionary=True)
+    search_query = "%" + collegesearch + "%"
+    cursor.execute("SELECT * FROM colleges WHERE collegecode LIKE %s OR collegename LIKE %s", (search_query, search_query))   
+    colleges = cursor.fetchall()
+    cursor.close()
+    return colleges
+

@@ -63,7 +63,10 @@
     <!-- Student information table -->
     <div class="section">
       <h2>Student Information</h2>
-      <input type="text" id="search-bar" placeholder="Search...">
+      <form method="POST" action="/student/search">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input class="search-bar" type="text" name="studentsearch" placeholder="Search">
+        </form>
       <table id="student-table">
         <thead>
           <tr>

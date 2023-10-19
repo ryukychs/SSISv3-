@@ -42,10 +42,14 @@
       </form>
     </div>
 
+    
     <!-- College information table -->
     <div class="section">
-      <h2>College Information</h2>
-      <input type="text" id="search-bar" placeholder="Search...">
+      <h2>College Information</h2> 
+      <form method="POST" action="/college/search">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input class="search-bar" type="text" name="collegesearch" placeholder="Search">
+        </form>
       <table id="college-table">
         <thead>
           <tr>
