@@ -60,3 +60,21 @@ function deleteStudent(button) {
         });
     }
 }
+
+function editStudent(id, firstname, lastname, coursecode, yearlevel, gender) {
+    document.getElementById("id").value = id;
+    document.getElementById("firstname").value = firstname;
+    document.getElementById("lastname").value = lastname;
+    document.getElementById("coursecode").value = coursecode;
+    document.getElementById("yearlevel").value = yearlevel;
+    document.getElementById("gender").value = gender;
+  
+    // Change the form action and button text to "Edit Student"
+    document.getElementById("add-student-form").action = "/student/edit";
+    document.querySelector("button[type=submit]").textContent = "Edit Student";
+  }
+  
+
+
+
+

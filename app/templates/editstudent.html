@@ -30,9 +30,8 @@
 
     <!-- Student input form -->
     <div class="section">
-     <form id="add-student-form" method="POST" action="/student/add">
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-        <input type="hidden" id="student-id" name="student_id" value="">
+      <form id="add-student-form"  method="POST" action="/edit_student">
+        <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
         <div class="form-group">
           <label for="id">ID:</label>
           <input type="text" id="id" name="id" required>
@@ -57,7 +56,10 @@
           <label for="gender">Gender:</label>
           <input type="text" id="gender" name="gender" required>
         </div>
-        <button type="submit">Add Student</button>
+        <form id="edit-student-form" method="POST" action="/edit_student">
+            <!-- Your form fields here, including hidden input for CSRF token -->
+            <button type="submit">Edit Student</button>
+        </form>   
       </form>
     </div>
 

@@ -37,3 +37,28 @@ def remove_college(id):
         print(id)
         delete_student(id)
         return jsonify({'success': True})
+    
+from flask import jsonify
+
+@student_bp.route('/student/edit', methods=['POST'])
+def edit_student():
+    student_id = request.form.get('student_id')
+    if request.method == 'POST':
+        student_id = request.form.get('student_id')
+        first_name = request.form.get('first_name').title()
+        last_name = request.form.get('last_name').title()
+        course_code = request.form.get('course_code').upper()
+        year_level = request.form.get('year_level')
+        gender = request.form.get('gender').capitalize()
+        print(student_id, first_name, last_name, course_code, year_level, gender)
+        update_student(student_id, first_name, last_name, course_code, year_level, gender)
+        return redirect('/students') 
+    student_id = request.args.get('student_id')
+    first_name = request.args.get('first_name')
+    last_name = request.args.get('last_name')
+    course_code = request.args.get('course_code')
+    year_level = request.args.get('year_level')
+    gender = request.args.get('gender')
+    return redirect('/student')
+
+ 

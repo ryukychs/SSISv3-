@@ -33,4 +33,4 @@ def remove_college(collegecode):
         print(collegecode)
         delete_college(collegecode)
         return jsonify({'success': True})
-
+    

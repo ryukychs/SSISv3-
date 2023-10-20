@@ -29,3 +29,4 @@ def delete_college(college_code):
     cursor.execute("DELETE FROM colleges WHERE collegecode = %s", (college_code,))
     mysql.connection.commit()
     cursor.close()
+    

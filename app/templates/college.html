@@ -64,9 +64,9 @@
             <td>{{ college.collegecode }}</td>
             <td>{{ college.collegename }}</td>
             <td>
-              <div class="button-container">
-                <button class="edit-button">Edit</button>
-                <button type="button" id="deleteCollege" college-code="{{college.collegecode}}" csrf-token="{{csrf_token()}}" onclick="deleteCollege(this)">Delete</button>
+                <div class="button-container">
+                  <button class="edit-button" type="submit">Edit</button>
+                  <button type="button" id="deleteCollege" college-code="{{college.collegecode}}" csrf-token="{{csrf_token()}}" onclick="deleteCollege(this)">Delete</button>
               </div>
             </td>
           </tr>
