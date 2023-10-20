@@ -53,7 +53,7 @@
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <input class="search-bar" type="text" name="coursesearch" placeholder="Search">
         </form>
-      <table id="course-table">
+      <table id="table">
         <thead>
           <tr>
             <th>Course Code</th>
@@ -70,7 +70,7 @@
             <td>{{ course.collegecode }}</td>
             <td>
               <div class="button-container">
-                <button class="edit-button">Edit</button>
+                <button class="edit-button" onclick="editCourse('{{ course.coursecode }}', '{{ course.coursename }}', '{{ course.collegecode }}')">Edit</button>
                 <button type="button" id="delCourse" course-code="{{course.coursecode}}" csrf-token="{{csrf_token()}}" onclick="delCourse(this)">Delete</button>
 
                 </div>

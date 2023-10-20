@@ -74,6 +74,55 @@ function editStudent(id, firstname, lastname, coursecode, yearlevel, gender) {
     document.querySelector("button[type=submit]").textContent = "Edit Student";
 }
 
+function editCollege(college_code, college_name) {
+    document.getElementById("college_code").value = college_code;
+    document.getElementById("college_name").value = college_name;
+    
+    document.getElementById("college_code").setAttribute("disabled", "true");
 
+    // Change the form action and button text to "Edit College"
+    document.getElementById("add-college-form").setAttribute("action", "/edit_college");
+    document.querySelector("button[type=submit]").textContent = "Edit College";
+}
 
+function editCourse(coursecode, coursename, collegecode) {
+    document.getElementById("coursename").value = coursename;
+    document.getElementById("coursecode").value = coursecode;
+    document.getElementById("collegecode").value = collegecode;
 
+    document.getElementById("coursecode").setAttribute("disabled", "true");
+    document.getElementById("collegecode").setAttribute("disabled", "true");
+
+    // Change the form action and button text to "Edit Course"
+    document.getElementById("add-course-form").setAttribute("action", "/edit_course");
+    document.querySelector("button[type=submit]").textContent = "Edit Course";
+}
+
+const searchInput = document.querySelector('.search-bar');
+const collegeTable = document.getElementById('table');
+const rows = collegeTable.getElementsByTagName('tr');
+
+searchInput.addEventListener('input', function () {
+    const searchTerm = this.value.trim().toLowerCase();
+
+    for (let i = 1; i < rows.length; i++) {
+        const row = rows[i];
+        const cells = row.getElementsByTagName('td');
+        let found = false; // Initialize found flag for the row
+
+        for (let j = 0; j < cells.length; j++) {
+            const cellText = cells[j].textContent.toLowerCase();
+
+            if (cellText.includes(searchTerm)) {
+                found = true; // Set the found flag
+                break; // No need to check other cells in this row
+            }
+        }
+
+        if (found) {
+            row.style.display = ''; // Show the row
+        } else {
+            row.style.display = 'none'; // Hide the row
+        }
+    }
+});

@@ -34,3 +34,18 @@ def remove_course(coursecode):
         print(coursecode)
         del_course(coursecode)
         return jsonify({'success': True})
+    
+@course_bp.route('/edit_course', methods=['POST'])
+def edit_course():
+    if request.method == 'POST':
+        course_code = request.form.get('coursecode')
+        course_name = request.form.get('coursename')
+        college_code = request.form.get('collegecode')
+        print(course_code, course_name)
+        update_course(course_name, course_code)
+        flash('course updated successfully!', 'success')
+        return redirect('/course')
+    course_code = request.args.get('coursecode')
+    course_name = request.args.get('coursename')
+    college_code = request.args.get('collegecode')
+    return render_template('/course')
