@@ -12,7 +12,7 @@ def Student():
 @student_bp.route('/student/add', methods=['GET', 'POST'])
 def add_course():
     if request.method == 'POST':
-        id = request.form['id']
+        id = request.form['student-id']
         firstname = request.form['firstname']
         lastname = request.form['lastname']
         coursecode = request.form['coursecode']
@@ -41,20 +41,20 @@ def remove_college(id):
 @student_bp.route('/student/edit', methods=['POST'])
 def edit_student():
     if request.method == 'POST':
-        student_id = request.form.get('student_id')
-        first_name = request.form.get('first_name').title()
-        last_name = request.form.get('last_name').title()
-        course_code = request.form.get('course_code').upper()
-        year_level = request.form.get('year_level')
+        student_id = request.form.get('student-id')
+        first_name = request.form.get('firstname').title()
+        last_name = request.form.get('lastname').title()
+        course_code = request.form.get('coursecode').upper()
+        year_level = request.form.get('yearlevel')
         gender = request.form.get('gender').capitalize()
         print(student_id, first_name, last_name, course_code, year_level, gender)
         update_student(student_id, first_name, last_name, course_code, year_level, gender)
         return redirect('/student')
-    student_id = request.args.get('student_id')
-    first_name = request.args.get('first_name')
-    last_name = request.args.get('last_name')
-    course_code = request.args.get('course_code')
-    year_level = request.args.get('year_level')
+    student_id = request.args.get('student-id')
+    first_name = request.args.get('firstname')
+    last_name = request.args.get('lastname')
+    course_code = request.args.get('coursecode')
+    year_level = request.args.get('yearlevel')
     gender = request.args.get('gender')
     return redirect('/student')
 
