@@ -69,7 +69,7 @@ function editStudent(id, firstname, lastname, coursecode, yearlevel, gender) {
     document.getElementById("yearlevel").value = yearlevel;
     document.getElementById("gender").value = gender;
 
-    document.getElementById("student-id").setAttribute("disabled", "true");
+    document.getElementById("student-id").setAttribute("readonly", "true");
 
     // Change the form action and button text to "Edit Student"
     document.getElementById("add-student-form").setAttribute("action", "/student/edit");
@@ -80,7 +80,7 @@ function editCollege(college_code, college_name) {
     document.getElementById("college_code").value = college_code;
     document.getElementById("college_name").value = college_name;
     
-    document.getElementById("college_code").setAttribute("disabled", "true");
+    document.getElementById("college_code").setAttribute("readonly", "true");
 
     // Change the form action and button text to "Edit College"
     document.getElementById("add-college-form").setAttribute("action", "/edit_college");
@@ -92,8 +92,8 @@ function editCourse(coursecode, coursename, collegecode) {
     document.getElementById("coursecode").value = coursecode;
     document.getElementById("collegecode").value = collegecode;
 
-    document.getElementById("coursecode").setAttribute("disabled", "true");
-    document.getElementById("collegecode").setAttribute("disabled", "true");
+    document.getElementById("coursecode").setAttribute("readonly", "true");
+    document.getElementById("collegecode").setAttribute("readonly", "true");
 
     // Change the form action and button text to "Edit Course"
     document.getElementById("add-course-form").setAttribute("action", "/edit_course");

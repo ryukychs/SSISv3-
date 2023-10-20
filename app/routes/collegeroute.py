@@ -12,8 +12,8 @@ def College():
 @college_bp.route('/college/add', methods=['GET', 'POST'])
 def add_college():
     if request.method == 'POST':
-        collegecode = request.form['collegecode']
-        collegename = request.form['collegename']
+        collegecode = request.form['college_code']
+        collegename = request.form['college_name']
         new_college(collegecode, collegename)
         return redirect('/college') 
     return render_template('college.html')

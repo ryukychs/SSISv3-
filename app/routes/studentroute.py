@@ -38,7 +38,7 @@ def remove_college(id):
         delete_student(id)
         return jsonify({'success': True})
 
-@student_bp.route('/student/edit', methods=['POST'])
+@student_bp.route('/student/edit', methods=['GET', 'POST'])
 def edit_student():
     if request.method == 'POST':
         student_id = request.form.get('student-id')
@@ -56,6 +56,6 @@ def edit_student():
     course_code = request.args.get('coursecode')
     year_level = request.args.get('yearlevel')
     gender = request.args.get('gender')
-    return redirect('/student')
+    return render_template('/student', student_id=student_id, first_name=first_name, last_name=last_name, course_code=course_code, year_level=year_level, gender=gender)
 
  
