@@ -30,9 +30,40 @@ def del_course(coursecode):
     mysql.connection.commit()
     cursor.close()
     
-def update_course(coursename, coursecode):
+def update_course(coursename, coursecode, collegecode):
     cursor = mysql.connection.cursor()
-    update_query = "UPDATE courses SET coursename = %s WHERE coursecode = %s"
-    cursor.execute(update_query, (coursename, coursecode))
+    update_query = "UPDATE courses SET coursename = %s, collegecode = %s WHERE coursecode = %s"
+    cursor.execute(update_query, (coursename, collegecode, coursecode))
     mysql.connection.commit()
     cursor.close()
+    
+def get_course_codes():
+    cursor = mysql.connection.cursor(dictionary=True)
+    query = "SELECT coursecode FROM courses"
+    cursor.execute(query)
+    course_code = cursor.fetchall()
+    cursor.close()
+    return course_code
+
+def get_college_code():
+    cursor = mysql.connection.cursor(dictionary=True)
+    query = "SELECT collegecode FROM colleges"
+    cursor.execute(query)
+    colleges = cursor.fetchall()
+    cursor.close()
+    return colleges
+
+def check_course(coursecode):
+    cursor = mysql.connection.cursor()
+    cursor.execute("SELECT coursecode FROM courses WHERE coursecode = %s", (coursecode,))
+    result = cursor.fetchone()
+    cursor.close()
+    return result
+
+def check_college(collegecode):
+    cursor = mysql.connection.cursor()
+    cursor.execute("SELECT collegecode FROM colleges WHERE collegecode = %s", (collegecode,))
+    result = cursor.fetchone()
+    cursor.close()
+    if result:
+        return True

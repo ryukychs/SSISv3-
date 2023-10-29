@@ -43,3 +43,18 @@ def get_student_by_id(student_id):
     student = cursor.fetchone()
     cursor.close()
     return student
+
+def check_id(student_id):
+    cursor = mysql.connection.cursor()
+    cursor.execute("SELECT id FROM students WHERE id = %s", (student_id,))
+    result = cursor.fetchone()
+    cursor.close()
+    return result
+
+def check_course(coursecode):
+    cursor = mysql.connection.cursor()
+    cursor.execute("SELECT coursecode FROM courses WHERE coursecode = %s", (coursecode,))
+    result = cursor.fetchone()
+    cursor.close()
+    if result:
+        return True

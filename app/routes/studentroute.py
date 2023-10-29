@@ -18,7 +18,13 @@ def add_course():
         coursecode = request.form['coursecode']
         yearlevel = request.form['yearlevel']
         gender = request.form['gender']
-        new_student(id, firstname, lastname, coursecode, yearlevel, gender)
+        if check_id(id):
+            flash('Student ID already exists!', 'error')
+        elif check_course(coursecode) != True:
+            flash('Course not found!', 'error')
+        else:
+            new_student(id, firstname, lastname, coursecode, yearlevel, gender)
+            flash('Student added successfully!', 'success')
         return redirect('/student') 
     return render_template('student.html')
 
@@ -34,8 +40,8 @@ def search_students():
 @student_bp.route('/students/delete/<string:id>', methods=['DELETE'])
 def remove_college(id):
     if request.method == 'DELETE':
-        print(id)
         delete_student(id)
+        flash('Student deleted successfully!', 'success')
         return jsonify({'success': True})
 
 @student_bp.route('/student/edit', methods=['GET', 'POST'])
@@ -47,8 +53,11 @@ def edit_student():
         course_code = request.form.get('coursecode').upper()
         year_level = request.form.get('yearlevel')
         gender = request.form.get('gender').capitalize()
-        print(student_id, first_name, last_name, course_code, year_level, gender)
-        update_student(student_id, first_name, last_name, course_code, year_level, gender)
+        if check_course(course_code) != True:
+            flash('Course not found!', 'error')
+        else:
+            update_student(student_id, first_name, last_name, course_code, year_level, gender)
+            flash('Student edited successfully!', 'success')
         return redirect('/student')
     student_id = request.args.get('student-id')
     first_name = request.args.get('firstname')
@@ -58,4 +67,3 @@ def edit_student():
     gender = request.args.get('gender')
     return render_template('/student', student_id=student_id, first_name=first_name, last_name=last_name, course_code=course_code, year_level=year_level, gender=gender)
 
- 

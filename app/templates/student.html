@@ -27,7 +27,7 @@
   </nav>
 
   <div class="container">
-
+    
     <!-- Student input form -->
     <div class="section">
     <form id="add-student-form" method="POST" action="/student/add">
@@ -67,6 +67,7 @@
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <input class="search-bar" type="text" name="studentsearch" placeholder="Search">
       </form>
+      <div style="height: 300px; overflow-y: scroll;">
       <table id="table">
         <thead>
           <tr>

@@ -14,7 +14,11 @@ def add_college():
     if request.method == 'POST':
         collegecode = request.form['college_code']
         collegename = request.form['college_name']
-        new_college(collegecode, collegename)
+        if check_college(collegecode):
+            flash('College code already exists!', 'success')
+        else:
+            new_college(collegecode, collegename)
+            flash('College added successfully!', 'success')
         return redirect('/college') 
     return render_template('college.html')
 
@@ -30,8 +34,8 @@ def search_colleges():
 @college_bp.route('/colleges/delete/<string:collegecode>', methods=['DELETE'])
 def remove_college(collegecode):
     if request.method == 'DELETE':
-        print(collegecode)
         delete_college(collegecode)
+        flash('College deleted successfully!', 'success')
         return jsonify({'success': True})
     
 @college_bp.route('/edit_college', methods=['GET', 'POST'])

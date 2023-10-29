@@ -68,7 +68,7 @@ function editStudent(id, firstname, lastname, coursecode, yearlevel, gender) {
     document.getElementById("coursecode").value = coursecode;
     document.getElementById("yearlevel").value = yearlevel;
     document.getElementById("gender").value = gender;
-
+    
     document.getElementById("student-id").setAttribute("readonly", "true");
 
     // Change the form action and button text to "Edit Student"
@@ -93,7 +93,6 @@ function editCourse(coursecode, coursename, collegecode) {
     document.getElementById("collegecode").value = collegecode;
 
     document.getElementById("coursecode").setAttribute("readonly", "true");
-    document.getElementById("collegecode").setAttribute("readonly", "true");
 
     // Change the form action and button text to "Edit Course"
     document.getElementById("add-course-form").setAttribute("action", "/edit_course");
@@ -128,3 +127,4 @@ searchInput.addEventListener('input', function () {
         }
     }
 });
+
