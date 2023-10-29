@@ -26,7 +26,7 @@ def add_course():
             new_student(id, firstname, lastname, coursecode, yearlevel, gender)
             flash('Student added successfully!', 'success')
         return redirect('/student') 
-    return render_template('student.html')
+    return render_template('addstudent.html')
 
 @student_bp.route('/student/search', methods=['GET', 'POST'])
 def search_students():
