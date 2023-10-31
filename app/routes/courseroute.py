@@ -24,7 +24,7 @@ def add_course():
             flash('Course added successfully!', 'success')
         return redirect('/course') 
     colleges = get_college_code()
-    return render_template('course.html', colleges=colleges)
+    return render_template('addcourse.html', colleges=colleges)
 
 @course_bp.route('/course/search', methods=['GET', 'POST'])
 def search_courses():
@@ -42,21 +42,17 @@ def remove_course(coursecode):
         flash('Course deleted successfully!', 'success')
         return jsonify({'success': True})
     
-@course_bp.route('/edit_course', methods=['POST'])
+@course_bp.route('/course/edit', methods=['GET', 'POST'])
 def edit_course():
     if request.method == 'POST':
-        course_code = request.form.get('coursecode')
-        course_name = request.form.get('coursename')
-        college_code = request.form.get('collegecode')
-        if check_college(college_code) != True:
-            flash('College not found!', 'error')
-        else:
-            update_course(course_name, course_code, college_code)
-            flash('Course updated successfully!', 'success')
-        return redirect('/course')
-    course_code = request.args.get('coursecode')
-    course_name = request.args.get('coursename')
-    college_code = request.args.get('collegecode')
-    return render_template('/course')
-
-
+        course_code = request.form.get('course_code')
+        course_name = request.form.get('course_name')
+        college_code = request.form.get('college_code')
+        update_course(course_code, course_name, college_code)
+        flash('Course updated successfully!', 'success')
+        return redirect('/course') 
+    course_code = request.args.get('course_code')
+    course_name = request.args.get('course_name')
+    college_code = request.args.get('college_code')
+    colleges = get_college_code()
+    return render_template('editcourse.html', course_code=course_code, course_name=course_name, college_code=college_code, colleges=colleges)

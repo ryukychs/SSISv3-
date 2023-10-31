@@ -109,8 +109,3 @@ td {
   width: 50%;  
 
 }
-.delete-button,
-.button {
-  flex: 1; 
-  width: 50%; 
-}
