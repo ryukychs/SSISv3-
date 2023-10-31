@@ -62,6 +62,7 @@ function deleteStudent(button) {
 }
 
 function editStudent(id, firstname, lastname, coursecode, yearlevel, gender) {
+    console.log("Edit button clicked")
     document.getElementById("student-id").value = id;
     document.getElementById("firstname").value = firstname;
     document.getElementById("lastname").value = lastname;

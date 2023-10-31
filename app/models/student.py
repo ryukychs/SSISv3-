@@ -58,3 +58,11 @@ def check_course(coursecode):
     cursor.close()
     if result:
         return True
+    
+def get_course_codes():
+    cursor = mysql.connection.cursor(dictionary=True)
+    query = "SELECT coursecode FROM courses"
+    cursor.execute(query)
+    course_code = cursor.fetchall()
+    cursor.close()
+    return course_code
