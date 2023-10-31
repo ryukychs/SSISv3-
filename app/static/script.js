@@ -61,21 +61,15 @@ function deleteStudent(button) {
     }
 }
 
-function editStudent(id, firstname, lastname, coursecode, yearlevel, gender) {
-    console.log("Edit button clicked")
-    document.getElementById("student-id").value = id;
-    document.getElementById("firstname").value = firstname;
-    document.getElementById("lastname").value = lastname;
-    document.getElementById("coursecode").value = coursecode;
-    document.getElementById("yearlevel").value = yearlevel;
-    document.getElementById("gender").value = gender;
-    
-    document.getElementById("student-id").setAttribute("readonly", "true");
-
-    // Change the form action and button text to "Edit Student"
-    document.getElementById("add-student-form").setAttribute("action", "/student/edit");
-    document.querySelector("button[type=submit]").textContent = "Edit Student";
-}
+function redirectToEditPage(studentId, firstName, lastName, courseCode, yearLevel, gender) {
+    // Construct the URL for the editstudent.html page with the student data as query parameters
+    const editPageURL = `/editstudent.html?student_id=${studentId}&first_name=${firstName}&last_name=${lastName}&course_code=${courseCode}&year_level=${yearLevel}&gender=${gender}`;
+  
+    // Navigate to the editstudent.html page
+    window.location.href = editPageURL;
+  }
+  
+  
 
 function editCollege(college_code, college_name) {
     document.getElementById("college_code").value = college_code;

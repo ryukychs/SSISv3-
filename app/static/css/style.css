@@ -99,30 +99,18 @@ td {
 
 .button-container {
   display: flex;
-  justify-content: center;
+  justify-content: center; 
+  align-items: center; 
+  height: 50px; 
 }
+.edit-button,
+.button {
+  flex: 1; 
+  width: 50%;  
 
-.edit-button{
-  background-color: #666765;
-  color: #fff;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  margin-right: 5px;
-  text-align: center;
 }
-.delete-button {
-  background-color: #2b2c2b;
-  color: #fff;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  margin-right: 5px;
-  text-align: center;
+.delete-button,
+.button {
+  flex: 1; 
+  width: 50%; 
 }
-
-.edit-button:hover,
-.delete-button:hover {
-  background-color: #000000;
-}
-

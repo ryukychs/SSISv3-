@@ -34,7 +34,9 @@
     <div class="section">
       <div class="header d-flex justify-content-between">
         <h2>Student Information</h2>
-        <a href="/student/add" class="btn btn-dark black"> Add Student</a>
+        <a href="/student/add" class="btn btn-dark black">
+          <i class="fas fa-user-plus"></i> Add Student <!-- User plus icon from Font Awesome -->
+        </a>
       </div>
       <form method="POST" action="/student/search">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
@@ -64,17 +66,23 @@
             <td>{{ student.gender }}</td>
             <td>
               <div class="button-container">
-                <form action="/student/edit" method="get">
-                  <input type="hidden" name="student_id" value="{{ student.id }}">
-                  <input type="hidden" name="first_name" value="{{ student.firstname }}">
-                  <input type="hidden" name="last_name" value="{{ student.lastname }}">
-                  <input type="hidden" name="course_code" value="{{ student.coursecode }}">
-                  <input type="hidden" name="year_level" value="{{ student.yearlevel }}">
-                  <input type="hidden" name="gender" value="{{ student.gender }}">
-                  <button class="edit-button" type="submit">Edit</button>
-                </form>
-                <button type="delete-button" id="deleteStudent" student-id="{{ student.id }}" csrf-token="{{ csrf_token() }}" onclick="deleteStudent(this)"> Delete</button>
-              </div>
+                <div class="button-container">
+                  <form action="/student/edit" method="get">
+                    <input type="hidden" name="student_id" value="{{ student.id }}">
+                    <input type="hidden" name="first_name" value="{{ student.firstname }}">
+                    <input type="hidden" name="last_name" value="{{ student.lastname }}">
+                    <input type="hidden" name="course_code" value="{{ student.coursecode }}">
+                    <input type="hidden" name="year_level" value="{{ student.yearlevel }}">
+                    <input type="hidden" name="gender" value="{{ student.gender }}">
+                    <button class="edit-button" type="submit">
+                      <i class="fas fa-pencil-alt"></i> <!-- Pencil icon -->
+                    </button>
+                  </form>
+                  <button class="button" id="deleteStudent" student-id="{{ student.id }}" csrf-token="{{ csrf_token() }}" onclick="deleteStudent(this)">
+                    <i class="fas fa-trash"></i> <!-- Trash icon -->
+                  </button>
+                </div>                
+              
             </td>
           </tr>
           {% endfor %}
