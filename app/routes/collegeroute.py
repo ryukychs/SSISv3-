@@ -20,7 +20,7 @@ def add_college():
             new_college(collegecode, collegename)
             flash('College added successfully!', 'success')
         return redirect('/college') 
-    return render_template('college.html')
+    return render_template('addcollege.html')
 
 @college_bp.route('/college/search', methods=['GET', 'POST'])
 def search_colleges():
@@ -38,7 +38,7 @@ def remove_college(collegecode):
         flash('College deleted successfully!', 'success')
         return jsonify({'success': True})
     
-@college_bp.route('/edit_college', methods=['GET', 'POST'])
+@college_bp.route('/college/edit', methods=['GET', 'POST'])
 def edit_college():
     if request.method == 'POST':
         college_code = request.form.get('college_code')
@@ -46,7 +46,7 @@ def edit_college():
         print(college_code, college_name)
         update_college(college_code, college_name)
         flash('College updated successfully!', 'success')
-        return redirect('/college')
+        return redirect('/college') 
     college_code = request.args.get('college_code')
     college_name = request.args.get('college_name')
-    return render_template('/college', college_code=college_code, college_name=college_name)
+    return render_template('editcollege.html', college_code=college_code, college_name=college_name)

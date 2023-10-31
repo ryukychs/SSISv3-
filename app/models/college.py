@@ -36,7 +36,7 @@ def update_college(college_code, college_name):
     cursor.execute(update_query, (college_name, college_code))
     mysql.connection.commit()
     cursor.close()
-
+    
 def check_college(collegecode):
     cursor = mysql.connection.cursor()
     cursor.execute("SELECT collegecode FROM colleges WHERE collegecode = %s", (collegecode,))

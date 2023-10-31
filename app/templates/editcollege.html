@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block container1 %}
+  <!-- Bootstrap navigation bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black; color: white;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">STUDENT INFORMATION SYSTEM</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/student">STUDENTS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/course">COURSE</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/college">COLLEGE</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- College input form -->
+    <div class="section">
+      <form method="POST" action="/college/edit">
+        <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+
+        <div class="form-group">
+            <label for="college_code">College Code</label>
+            <input type="text" class="form-control" id="college_code" name="college_code" value="{{college_code}}" readonly>
+            <input name="college_code" value="{{college_code}}" hidden>
+
+        <div class="form-group">
+            <label for="college_name">College Name</label>
+            <input type="text" class="form-control" id="college_name" name="college_name" value="{{college_name}}" required>
+        </div> <br>
+        <button type="submit" class="btn btn-primary col-md-12">Update College</button>
+    </form>
+</div>
+</div>
+</div>
+{% endblock%}
