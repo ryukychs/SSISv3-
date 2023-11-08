@@ -1,4 +1,6 @@
+# .gitignore
 __pycache__/
 .venv/
 .env
 app/__pycache__/
+.flaskenv
