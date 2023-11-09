@@ -1,6 +1,7 @@
 from flask import *
 from app.models.student import * 
 from flask_wtf import *
+import re
 
 student_bp = Blueprint('student', __name__)
 
@@ -18,7 +19,9 @@ def add_course():
         coursecode = request.form['coursecode']
         yearlevel = request.form['yearlevel']
         gender = request.form['gender']
-        if check_id(id):
+        if not re.match(r'^\d{4}-\d{4}$', id):
+            flash('Invalid Student ID format. Follow YYYY-NNNN format.', 'error')
+        elif check_id(id):
             flash('Student ID already exists!', 'error')
         elif check_course(coursecode) != True:
             flash('Course not found!', 'error')

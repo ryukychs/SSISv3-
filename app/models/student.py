@@ -4,15 +4,16 @@ mysql = MySQL()
 
 def student_list():
     cursor = mysql.connection.cursor(dictionary=True)
-    query = "SELECT * FROM students"
+    query = """ SELECT students.*, CONCAT(colleges.collegename, ' (', courses.collegecode, ')') AS collegecode FROM students
+    JOIN courses ON students.coursecode = courses.coursecode JOIN colleges ON courses.collegecode = colleges.collegecode"""
     cursor.execute(query)
     students = cursor.fetchall()
     cursor.close()
     return students
 
-def new_student(id, firstname, lastname, coursecode, yearlevel, gender):
+def new_student(id, firstname, lastname, coursecode, collegecode, yearlevel, gender):
     cursor = mysql.connection.cursor()
-    cursor.execute("INSERT INTO students (id, firstname, lastname, coursecode, yearlevel, gender) VALUES (%s, %s, %s, %s, %s, %s)", (id, firstname, lastname, coursecode, yearlevel, gender))
+    cursor.execute("INSERT INTO students (id, firstname, lastname, coursecode, collegecode, yearlevel, gender) VALUES (%s, %s, %s, %s, %s, %s, %s)", (id, firstname, lastname, coursecode, collegecode, yearlevel, gender))
     mysql.connection.commit()
     cursor.close()
     
