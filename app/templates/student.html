@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% set curr_tab = "students" %}
 {% set body_class = 'body_index' %}
 
 {% block container1 %}
@@ -46,6 +47,7 @@
       <table id="table">
         <thead>
           <tr>
+            <th></th>
             <th>ID</th>
             <th>First Name</th>
             <th>Last Name</th>
@@ -57,8 +59,14 @@
           </tr>
         </thead>
         <tbody>
+          {% if students | length == 0 %}
+          <tr>
+            <p> No student found. </p>
+          </tr>
+          {% else %}
           {% for student in students %}
           <tr>
+            <td> <img id="student_image" src="{{ student.photo or "https://res.cloudinary.com/dclxaugvd/image/upload/v1701794169/ssis/Brown_And_Orange_Retro_Photography_Club_Logo_2_ecaitf.png" }}" alt="{{ student.id }}"> </a> </td>
             <td>{{ student.id }}</td>
             <td>{{ student.firstname }}</td>
             <td>{{ student.lastname }}</td>
@@ -74,6 +82,7 @@
                     <input type="hidden" name="first_name" value="{{ student.firstname }}">
                     <input type="hidden" name="last_name" value="{{ student.lastname }}">
                     <input type="hidden" name="course_code" value="{{ student.coursecode }}">
+                    <input type="hidden" name="college_code" value="{{ student.collegecode }}">
                     <input type="hidden" name="year_level" value="{{ student.yearlevel }}">
                     <input type="hidden" name="gender" value="{{ student.gender }}">
                     <button class="edit-button" type="submit">
@@ -88,12 +97,11 @@
             </td>
           </tr>
           {% endfor %}
+          {% endif %}
         </tbody>
-      </table>
-    </div>
-  </div>
+    </table>
+</div>
+</div>
+</div>
+</div>
 {% endblock %}
-
-
-
-

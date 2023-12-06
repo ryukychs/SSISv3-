@@ -110,4 +110,30 @@ td {
 
 }
 
+#student_image {
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  border-radius: 10%;
+  border: 1px solid rgb(212, 202, 202);
+}
 
+
+.student_image_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#student_info_image {
+  margin-top: 20px;
+  height: 250px;
+  width: 250px;
+  object-fit: cover;
+  border: 1px solid rgb(247, 237, 237);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -11,11 +11,12 @@ def student_list():
     cursor.close()
     return students
 
-def new_student(id, firstname, lastname, coursecode, collegecode, yearlevel, gender):
+def new_student(id, firstname, lastname, coursecode, yearlevel, gender, photo):
     cursor = mysql.connection.cursor()
-    cursor.execute("INSERT INTO students (id, firstname, lastname, coursecode, collegecode, yearlevel, gender) VALUES (%s, %s, %s, %s, %s, %s, %s)", (id, firstname, lastname, coursecode, collegecode, yearlevel, gender))
+    cursor.execute("INSERT INTO students (id, firstname, lastname, coursecode, yearlevel, gender, photo) VALUES (%s, %s, %s, %s, %s, %s, %s)", (id, firstname, lastname, coursecode, yearlevel, gender, photo))
     mysql.connection.commit()
     cursor.close()
+   
     
 def find_student(studentsearch):
     cursor = mysql.connection.cursor(dictionary=True)
@@ -31,10 +32,10 @@ def delete_student(student_id):
     mysql.connection.commit()
     cursor.close()
 
-def update_student(id, firstname, lastname, coursecode, yearlevel, gender):
+def update_student(id, firstname, lastname, coursecode, yearlevel, gender, photo):
     cursor = mysql.connection.cursor()
-    update_query = "UPDATE students SET firstname = %s, lastname = %s, coursecode = %s, yearlevel = %s, gender = %s WHERE id = %s"
-    cursor.execute(update_query, (firstname, lastname, coursecode, yearlevel, gender, id))
+    update_query = "UPDATE students SET firstname = %s, lastname = %s, coursecode = %s, yearlevel = %s, gender = %s, photo = %s WHERE id = %s"
+    cursor.execute(update_query, (firstname, lastname, coursecode, yearlevel, gender, photo, id))
     mysql.connection.commit()
     cursor.close()
 
@@ -67,3 +68,11 @@ def get_course_codes():
     course_code = cursor.fetchall()
     cursor.close()
     return course_code
+
+def read_student(student_id):
+    cursor = mysql.connection.cursor(dictionary=True)
+    query = "SELECT students.id, students.firstname, students.lastname, students.yearlevel, students.gender, students.photo, courses.coursecode, courses.coursename, colleges.collegecode, colleges.collegename FROM students JOIN courses ON students.coursecode = courses.coursecode JOIN colleges ON courses.collegecode = colleges.collegecode WHERE students.id = %s"
+    cursor.execute(query, (student_id,))
+    result = cursor.fetchone()
+    cursor.close()
+    return result

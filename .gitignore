@@ -6,3 +6,8 @@ app/__pycache__/
 app/models/__pycache__/
 app/routes/__pycache__/
 .flaskenv
+
+*.venv
+*.env
+*.flaskenv
+*.pyc
